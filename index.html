@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>HCHAT - Hiscope Chat</title>
+    <meta name="description" content="HCHAT - Instant messaging by Hiscope Enterprises. No registration, no login, no data stored." />
+    <meta name="author" content="Hiscope Enterprises" />
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#ec4899" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="HCHAT" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    
+    <!-- Icons -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="HCHAT - Hiscope Chat" />
+    <meta property="og:description" content="Instant messaging solution by Hiscope Enterprises" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@hiscope_ent" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    
+    <!-- Responsive Design -->
+    <style>
+      @media screen and (max-width: 768px) {
+        body { font-size: 14px; }
+      }
+      @media screen and (min-width: 1024px) {
+        body { font-size: 16px; }
+      }
+      /* Prevent zoom on input focus for iOS */
+      @media screen and (-webkit-device-pixel-ratio: 2) {
+        input, textarea, select { font-size: 16px !important; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
+    
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
